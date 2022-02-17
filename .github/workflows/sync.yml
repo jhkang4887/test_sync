@@ -1,22 +1,14 @@
-name: GitlabSync
+name: Automatically Deployment
 
-on:
-  - push
-  - delete
+on: [push]
 
 jobs:
-  sync:
+  deployment:
     runs-on: ubuntu-latest
-    name: Git Repo Sync
+
+    # 해당 Job의 이름을 아래와 같이 설정하여 Actions 탭에서 확인할 수 있게 설정합니다.
+    name: Deploying to surge
+
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: 'test_sync'
-    - uses: jhkang4887/git-repo-sync@v0.1.0
-      with:
-        # Such as https://github.com/wangchucheng/git-repo-sync.git
-        target-url: ${{ secrets.TARGET_URL }}
-        # Such as wangchucheng
-        target-username: ${{ secrets.TARGET_USERNAME }}
-          # You can store token in your project's 'Setting > Secrets' and reference the name here. Such as ${{ secrets.ACCESS\_TOKEN }}
-        target-token: ${{ secrets.TARGET_TOKEN }}
+      # 해당 레포지토리로 check-out하는 Action을 불러왔습니다.
+      - uses: actions/checkout@v2
