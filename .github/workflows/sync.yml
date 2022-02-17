@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        ref: 'test_sync'
     - uses: jhkang4887/git-repo-sync@v0.1.0
       with:
         # Such as https://github.com/wangchucheng/git-repo-sync.git
